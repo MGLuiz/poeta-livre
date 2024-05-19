@@ -41,32 +41,125 @@
                 </form>
             </nav>
         </div>
+
     </header> <!-- Header -->
     
     <section id="main-section">
-        <div class="container">
+        <div class="container-md">
             <div class="poemas-destaque">
-                <div class="qtd-poemas"></div>
-                <h2>Ultimas Publicações...</h2>
-                <div class="poema-box">
-                    <div class="poema-header">
-                        <div class="poema-title"></div>
-                        <div class="poema-data"></div>
+                <span class="qtd-poemas">2251 poemas publicados.</span>
+                <h2>Poemas mais recentes...</h2>
+                <div class="flex" style="justify-content: space-between;">
+                    <div class="poemas-cards">
+                        <div class="poema-card">
+                            <div class="poema-header flex">
+                                <div class="poema-title">Poema</div>
+                                <div class="poema-date">18/05/2024</div>
+                            </div>
+                            <div class="poema-preview">
+                                <p>
+                                    Lorem ipsum dolor sit amet, <br>
+                                    consectetur adipisicing elit. <br>
+                                    Facere excepturi repellat ratione <br>
+                                    enim impedit totam obcaecati dolore cumque!
+                                </p>
+                            </div>
+                            <div class="poema-autoria">
+                                <div class="poema-autor"><a href="">Marcos LaFontaine</a></div>
+                                <div class="poema-fonte">Revista Sábado, ed.233 p.12</div>
+                            </div>
+                            <div class="poema-toolbar flex">
+                                <div class="share-tools">
+                                    share-tools here
+                                </div>
+                                <div class="other-tools">
+                                    other-tools here
+                                </div>
+                            </div>
+                        </div> <!-- Poema card -->
+                        <div class="poema-card">
+                            <div class="poema-header flex">
+                                <span class="poema-title">Poema</span>
+                                <span class="poema-date">18/05/2024</span>
+                            </div>
+                            <div class="poema-preview">
+                                <p>
+                                    Lorem ipsum dolor sit amet, <br>
+                                    consectetur adipisicing elit. <br>
+                                    Facere excepturi repellat ratione <br>
+                                    enim impedit totam obcaecati dolore cumque!
+                                </p>
+                            </div>
+                            <div class="poema-autoria">
+                                <span class="poema-autor"><a href="">Marcos LaFontaine</a></span>
+                                <span class="poema-fonte">Revista Sábado, ed.233 p.12</span>
+                            </div>
+                            <div class="poema-toolbar flex">
+                                <div class="share-tools">
+                                    share-tools here
+                                </div>
+                                <div class="other-tools">
+                                    other-tools here
+                                </div>
+                            </div>
+                        </div> <!-- Poema card -->  
                     </div>
-                    <div class="poema-preview"></div>
-                    <div class="poema-autoria">
-                        <div class="poema-autor"></div>
-                        <div class="poema-fonte"></div>
-                    </div>
-                    <div class="poema-toolbar"></div>
+
+                    <aside class="flex">
+                        <a href="" class="add-poema-btn flex">
+                            <button class="animated-button">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                                </svg>
+                                <span class="text">Adicionar Poema</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                                </svg>
+                            </button>                              
+                        </a>
+
+                        <div class="poema-tags">
+                            <a href="">
+                                <div class="tag-row">
+                                    <span class="tag-name">
+                                        Poemas para Vestibulares
+                                    </span>
+                                </div>
+                            </a> <!-- Tag Row -->
+                            <a href="">
+                                <div class="tag-row">
+                                    <span class="tag-name">
+                                        Poemas Romantistas
+                                    </span>
+                                </div>
+                            </a> <!-- Tag Row -->
+                            <a href="">
+                                <div class="tag-row">
+                                    <span class="tag-name">
+                                        Poemas Parnasianistas
+                                    </span>
+                                </div>
+                            </a> <!-- Tag Row -->
+                            <a href="">
+                                <div class="tag-row">
+                                    <span class="tag-name">
+                                        Poemas Modernistas
+                                    </span>
+                                </div>
+                            </a> <!-- Tag Row -->
+                            <a href="">
+                                <div class="tag-row">
+                                    <span class="tag-name">
+                                        Poemas Realistas
+                                    </span>
+                                </div>
+                            </a> <!-- Tag Row -->
+                            
+                        </div>
+                    </aside>
                 </div>
             </div> <!-- Poemas em destaque-->
-
-            <aside>
-                <a href="" class="add-poema-button">
-
-                </a>
-            </aside>
         </div>
     </section> <!-- Main Section -->
     

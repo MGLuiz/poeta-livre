@@ -9,6 +9,7 @@
 }
 
 :root{
+    --bg-color: #f5f5f5;
     --primary-color: #ffefdf;
     --secondary-color: #212b3a;
     --primary-font-color: #212b3a;
@@ -20,6 +21,7 @@ a{
 }
 
 body{
+    background-color: var(--bg-color);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -32,4 +34,5 @@ body{
 
 .flex{
     display: flex;
+    flex-wrap: wrap;
 }
