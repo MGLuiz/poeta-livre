@@ -1,2 +1,2 @@
 # ignore all credentials txt files
-**/credentials
+**/config
