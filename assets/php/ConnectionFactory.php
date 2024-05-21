@@ -1,17 +1,17 @@
 <?php
+    require $_SERVER['DOCUMENT_ROOT'].'/poetalivre/config/dbConfig.php';
+
     class ConnectionFactory{
-        private $conn = null;
+        public static function getConnection(){
+            try{
+                // drive:host=url;dbname=squema", "user", "pass"
+                $conn = new PDO(DRIVE.':host='.URL.';dbname='.SQUEMA, USER, PASS, array(PDO::ATTR_PERSISTENT => true));
+                return $conn;
 
-        public function getConnection(){
-
-            return $this->conn;
-        }
-
-        public function readDBCredentials(){
-            $dbCreJson = file_get_contents('./../../credentials/dbCredentials.json');
-            $dbCreJsonDecoded = json_decode($dbCreJson, true);
-
-            return $dbCreJsonDecoded;
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return null;
+            }
         }
     }
 ?>
