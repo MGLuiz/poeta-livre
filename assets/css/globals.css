@@ -9,6 +9,7 @@
 }
 
 :root{
+    scroll-behavior: smooth;
     --bg-color: #f5f5f5;
     --primary-color: #ffefdf;
     --secondary-color: #212b3a;
@@ -35,4 +36,79 @@ body{
 .flex{
     display: flex;
     flex-wrap: wrap;
+}
+
+/* Header */
+
+header{
+    background-color: var(--primary-color);
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #a3a3a3;
+}
+
+header .container{
+    justify-content: space-between;
+}
+
+.logo{
+    align-items: center;
+}
+.logo img{
+    width: 100px;
+}
+.logo h1{
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;
+    margin: 0;
+}
+
+header nav ul{
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    flex-wrap: wrap ;
+}
+header nav ul li{
+    padding: 0 0.8rem 6px 0.8rem;
+    transition: .3s;
+    border-bottom: 1px solid var(--primary-color);
+}
+header nav ul li:last-child{
+    margin-right: 1rem;
+}
+
+header nav ul li:hover,
+header nav ul li.active{
+    border-bottom: 1px solid var(--secondary-color);   
+}
+
+header nav ul li a{
+    min-width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+header nav form{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+header nav form input{
+    outline: none;
+    border: 0;
+
+    border-bottom: 1px solid ;
+    background-color: var(--primary-color);
+    padding: 6px;
+}
+
+header nav form button{
+    padding: 6px;
+    background: transparent !important;
+    position: absolute;
+    right: 0;
+    border: 0;
 }

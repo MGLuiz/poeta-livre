@@ -1,3 +1,12 @@
+<?php 
+    require 'autoload.php';
+
+    $pdoConn = ConnectionFactory::getConnection();
+    $DAOpoemas = new DAOPoemas($pdoConn);
+    $poemas = $DAOpoemas->getAllPoemas();
+
+    $pdoConn = null;
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,7 +29,7 @@
         <div class="container flex">
             <a href="">
                 <div class="logo flex">
-                    <img src="assets/img/poetalivre-logo-rmbg.png" alt="">
+                    <img src="./assets/img/poetalivre-logo-rmbg.png" alt="">
                     <h1>Poeta Livre</h1>
                 </div>
             </a>
@@ -43,7 +52,7 @@
         </div>
 
     </header> <!-- Header -->
-    
+
     <section id="main-section">
         <div class="container-md">
             <div class="poemas-destaque">
@@ -51,58 +60,31 @@
                 <h2>Poemas mais recentes...</h2>
                 <div class="flex" style="justify-content: space-between;">
                     <div class="poemas-cards">
-                        <div class="poema-card">
-                            <div class="poema-header flex">
-                                <div class="poema-title">Poema</div>
-                                <div class="poema-date">18/05/2024</div>
-                            </div>
-                            <div class="poema-preview">
-                                <p>
-                                    Lorem ipsum dolor sit amet, <br>
-                                    consectetur adipisicing elit. <br>
-                                    Facere excepturi repellat ratione <br>
-                                    enim impedit totam obcaecati dolore cumque!
-                                </p>
-                            </div>
-                            <div class="poema-autoria">
-                                <div class="poema-autor"><a href="">Marcos LaFontaine</a></div>
-                                <div class="poema-fonte">Revista Sábado, ed.233 p.12</div>
-                            </div>
-                            <div class="poema-toolbar flex">
-                                <div class="share-tools">
-                                    share-tools here
-                                </div>
-                                <div class="other-tools">
-                                    other-tools here
-                                </div>
-                            </div>
-                        </div> <!-- Poema card -->
-                        <div class="poema-card">
-                            <div class="poema-header flex">
-                                <span class="poema-title">Poema</span>
-                                <span class="poema-date">18/05/2024</span>
-                            </div>
-                            <div class="poema-preview">
-                                <p>
-                                    Lorem ipsum dolor sit amet, <br>
-                                    consectetur adipisicing elit. <br>
-                                    Facere excepturi repellat ratione <br>
-                                    enim impedit totam obcaecati dolore cumque!
-                                </p>
-                            </div>
-                            <div class="poema-autoria">
-                                <span class="poema-autor"><a href="">Marcos LaFontaine</a></span>
-                                <span class="poema-fonte">Revista Sábado, ed.233 p.12</span>
-                            </div>
-                            <div class="poema-toolbar flex">
-                                <div class="share-tools">
-                                    share-tools here
-                                </div>
-                                <div class="other-tools">
-                                    other-tools here
-                                </div>
-                            </div>
-                        </div> <!-- Poema card -->  
+                        <?php
+                            foreach ($poemas as $poema){
+                                echo '<div class="poema-card">';
+                                echo '<div class="poema-header flex">';
+                                echo '<div class="poema-title">'.$poema['titulo'].'</div>';
+                                echo '<div class="poema-date">'.$poema['dt_registro'].'</div>';
+                                echo '</div>';
+
+                                $poema['poema'] = explode("\n", $poema['poema']);
+                                $poema['poema'] = implode("<br>", $poema['poema']);
+                                echo '<div class="poema-preview"><p>'.$poema['poema'].'</p></div>';
+                                echo '<div class="poema-autoria">';
+
+                                $poema['id_autor'] = $DAOpoemas->getAutorName($poema['id_autor']);
+                                echo '<div class="poema-autor"><a href="">'.$poema['id_autor']['nome'].'</a></div>';
+                                echo '<div class="poema-fonte">Revista Sábado, ed.233 p.12</div>';
+                                echo '</div>';
+
+                                echo '<div class="poema-toolbar flex">';
+                                echo '<div class="share-tools"></div>';
+                                echo '<div class="other-tools"></div>';
+                                echo '</div>';
+                                echo '</div> <!-- Poema Card -->';
+                            }
+                        ?>
                     </div>
 
                     <aside class="flex">
@@ -163,5 +145,21 @@
         </div>
     </section> <!-- Main Section -->
     
+    <footer>
+        <div class="container">
+            <span class="footer-quote flex">
+                Poeta Livre é totalmente desenvolvido, com carinho, por &nbsp; <a href="https://mgluiz.github.io/mgluiz-linktree/">MGLuiz</a>
+            </span>
+            <hr>
+            <div class="flex" style="justify-content: space-between; align-items: center;">
+                <span class="info-project">
+                    "A poesia, antes de tudo, é a transfiguração da realidade em expressão de beleza e de contemplação emocional, esta desperta os valores estéticos, aprimora as emoções, sensibilidade, aguça sensações e enriquece a percepção."
+                </span>
+                <span class="mgluiz-copyright">
+                    &copy; 2024 <a href="https://mgluiz.github.io/mgluiz-linktree/">Luiz Brito</a>
+                </span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
