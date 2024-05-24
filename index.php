@@ -2,9 +2,10 @@
     require 'autoload.php';
 
     $pdoConn = ConnectionFactory::getConnection();
-    $DAOpoemas = new DAOPoemas($pdoConn);
-    $poemas = $DAOpoemas->getAllPoemas();
+    $PoemaDAO = new PoemaDAO($pdoConn);
+    $allPoemas = $PoemaDAO->getAllPoemas();
 
+    
     $pdoConn = null;
 ?>
 <!DOCTYPE html>
@@ -56,35 +57,30 @@
     <section id="main-section">
         <div class="container-md">
             <div class="poemas-destaque">
-                <span class="qtd-poemas">2251 poemas publicados.</span>
+                <span class="qtd-poemas"><?=sizeof($allPoemas)?> poemas publicados</span>
                 <h2>Poemas mais recentes...</h2>
                 <div class="flex" style="justify-content: space-between;">
                     <div class="poemas-cards">
-                        <?php
-                            foreach ($poemas as $poema){
-                                echo '<div class="poema-card">';
-                                echo '<div class="poema-header flex">';
-                                echo '<div class="poema-title">'.$poema['titulo'].'</div>';
-                                echo '<div class="poema-date">'.$poema['dt_registro'].'</div>';
-                                echo '</div>';
+                        <?php foreach ($allPoemas as $poema){ ?>
+                        <div class="poema-card">
+                            <div class="poema-header flex">
+                                <div class="poema-title"><?=$poema['titulo']?></div>
+                                <div class="poema-date"><?=$poema['dt_registro']?></div>
+                            </div>
+                            <div class="poema-preview">
+                                <p> <?=str_replace("\n", "<br/>", $poema['poema'])?> </p>
+                            </div>
+                            <div class="poema-autoria">
+                                <div class="poema-autor"><?=$poema['autor'] ?></div>
+                                <div class="poema-fonte"><?=$poema['fonte'] ?></div>
+                            </div>
+                            <div class="poema-toolbar flex">
+                                <div class="share-tools"></div>
+                                <div class="other-tools"></div>
+                            </div>
+                        </div> <!-- Poema Card -->
 
-                                $poema['poema'] = explode("\n", $poema['poema']);
-                                $poema['poema'] = implode("<br>", $poema['poema']);
-                                echo '<div class="poema-preview"><p>'.$poema['poema'].'</p></div>';
-                                echo '<div class="poema-autoria">';
-
-                                $poema['id_autor'] = $DAOpoemas->getAutorName($poema['id_autor']);
-                                echo '<div class="poema-autor"><a href="">'.$poema['id_autor']['nome'].'</a></div>';
-                                echo '<div class="poema-fonte">Revista Sábado, ed.233 p.12</div>';
-                                echo '</div>';
-
-                                echo '<div class="poema-toolbar flex">';
-                                echo '<div class="share-tools"></div>';
-                                echo '<div class="other-tools"></div>';
-                                echo '</div>';
-                                echo '</div> <!-- Poema Card -->';
-                            }
-                        ?>
+                        <?php } ?>
                     </div>
 
                     <aside class="flex">
