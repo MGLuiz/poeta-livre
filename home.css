@@ -49,10 +49,10 @@
 }
 
 .poema-card .poema-autoria{
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.poema-card .poema-autoria a{
+.poema-card .poema-autor{
     font-size: 0.9rem;
     color: #316fd3;
 }
