@@ -62,13 +62,27 @@
 }
 
 .poema-card .poema-toolbar{
-    justify-content: space-between;
     border-top: 1px solid #a3a3a3;
     width: 100%;
     padding: 8px 0;
     color: #505050;
     font-size: 0.9rem;
+    gap: 6px;
 }
+
+.poema-card .poema-toolbar button{
+    border: none;
+    background-color: transparent;
+    transition: .5s;
+}
+.poema-card .poema-toolbar button:hover{
+    transform: scale(1.2);
+}
+
+.poema-toolbar button img{
+    width: 24px;
+}
+
 
 /* Aside < Poemas em Destaque */
 

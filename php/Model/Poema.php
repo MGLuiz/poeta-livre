@@ -3,15 +3,14 @@
         private int $id;
         private string $title;
         private string $poema;
-        private int $idAutor;
-        private int $fonte;
+        private string $autor;
+        private string $fonte;
         private string $dtRegistro;
 
-        public function __construct($id, $title, $poema, $idAutor, $fonte, $dtRegistro){
-            $this->id = $id;
+        public function __construct($title, $poema, $autor, $fonte, $dtRegistro){
             $this->title = $title;
             $this->poema = $poema;
-            $this->idAutor = $idAutor;
+            $this->autor = $autor;
             $this->fonte = $fonte;
             $this->dtRegistro = $dtRegistro;
         }
@@ -27,7 +26,7 @@
             return $this->poema;
         }
         public function getIdAutor(){
-            return $this->idAutor;
+            return $this->autor;
         }
         public function getFonte(){
             return $this->fonte;
@@ -45,7 +44,7 @@
             $this->poema = $poema;
         }
         public function setIdAutor($idAutor){
-            $this->idAutor = $idAutor;
+            $this->autor = $idAutor;
         }
         public function setFonte($fonte){
             $this->fonte = $fonte;

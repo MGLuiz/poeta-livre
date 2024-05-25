@@ -1,64 +1,33 @@
 <?php 
     require 'autoload.php';
 
-    $pdoConn = ConnectionFactory::getConnection();
-    $PoemaDAO = new PoemaDAO($pdoConn);
-    $allPoemas = $PoemaDAO->getAllPoemas();
+    $PoemaDAO = new PoemaDAO(ConnectionFactory::getConnection());
+    $_POST['order-by-select'] = "";
 
-    
-    $pdoConn = null;
+    if (isset($_POST['order-by-btn'])){
+        $allPoemas = $PoemaDAO->getAllPoemas($_POST['order-by-select']);
+    }else{
+        $allPoemas = $PoemaDAO->getAllPoemas("dt_registro DESC");
+    }
+
+    require 'php/Partials/Header.php';
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poeta Livre</title>
-    <link rel="shortcut icon" href="" type="image/x-icon">
-
-    <!-- CSS imports -->
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap-5.3.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/globals.css"/>
-    <link rel="stylesheet" type="text/css" href="home.css"/>
-    <!-- JS imports (defer)-->
-    <script src="assets/js/jquery-3.7.1.min.js" defer></script>
-    <script src="assets/bootstrap-5.3.3/js/bootstrap.min.js" defer></script>
-
-</head>
-<body>
-    <header>
-        <div class="container flex">
-            <a href="">
-                <div class="logo flex">
-                    <img src="./assets/img/poetalivre-logo-rmbg.png" alt="">
-                    <h1>Poeta Livre</h1>
-                </div>
-            </a>
-            <nav class="flex">
-                <ul class="flex">
-                    <li class="active"><a href="index.html">Poemas</a></li>
-                    <li><a href="sobre.html">Categorias</a></li>
-                    <li><a href="contato.html">Sobre</a></li>
-                    <li><a href="login.html">Publicar</a></li>
-                </ul>
-                <form action="" method="GET">
-                    <input type="text" name="search-input" id="serach-input" placeholder="Busque um Poema" required>
-                    <button type="submit" value="search-btn" id="search-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0,0,256,256">
-                            <g fill="#212b3a" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M21,3c-9.37891,0 -17,7.62109 -17,17c0,9.37891 7.62109,17 17,17c3.71094,0 7.14063,-1.19531 9.9375,-3.21875l13.15625,13.125l2.8125,-2.8125l-13,-13.03125c2.55469,-2.97656 4.09375,-6.83984 4.09375,-11.0625c0,-9.37891 -7.62109,-17 -17,-17zM21,5c8.29688,0 15,6.70313 15,15c0,8.29688 -6.70312,15 -15,15c-8.29687,0 -15,-6.70312 -15,-15c0,-8.29687 6.70313,-15 15,-15z"></path></g></g>
-                        </svg>
-                    </button>
-                </form>
-            </nav>
-        </div>
-
-    </header> <!-- Header -->
 
     <section id="main-section">
         <div class="container-md">
             <div class="poemas-destaque">
                 <span class="qtd-poemas"><?=sizeof($allPoemas)?> poemas publicados</span>
-                <h2>Poemas mais recentes...</h2>
+                <div class="order-by mb-4 d-flex align-items-center w-100">
+                    <span class="w-auto">Ordenar por: &nbsp;</span>
+                    <form action="./" method="POST" class="d-flex w-50" style="gap: 1rem;">
+                        <select class="form-select w-50" name="order-by-select" id="order-by-select">
+                        <option <?=$_POST['order-by-select'] == "dt_registro DESC" ? "selected" : "" ?> value="dt_registro DESC">Mais Recentes</option>
+                        <option <?=$_POST['order-by-select'] == "dt_registro ASC" ? "selected" : "" ?> value="dt_registro ASC">Mais Antigos</option>
+                        </select>
+                        <button type="submit" class="btn btn btn-secondary" name="order-by-btn" id="order-by-btn">Ordenar</button>
+                    </form>
+                </div>
+
                 <div class="flex" style="justify-content: space-between;">
                     <div class="poemas-cards">
                         <?php foreach ($allPoemas as $poema){ ?>
@@ -75,8 +44,12 @@
                                 <div class="poema-fonte"><?=$poema['fonte'] ?></div>
                             </div>
                             <div class="poema-toolbar flex">
-                                <div class="share-tools"></div>
-                                <div class="other-tools"></div>
+                                <button id="like-btn">
+                                    <img src="icons/lovelike-24x24.png" alt="Botão de dar like">
+                                </button>
+                                <button id="copy-btn" onclick="copyToClipBoard(<?=$poema['poema']?>)">
+                                    <img src="icons/copy-26x26" alt="Botão de Copiar">
+                                </button>
                             </div>
                         </div> <!-- Poema Card -->
 
@@ -84,7 +57,7 @@
                     </div>
 
                     <aside class="flex">
-                        <a href="" class="add-poema-btn flex">
+                        <a href="./adicionar/" class="add-poema-btn flex">
                             <button class="animated-button">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -96,45 +69,6 @@
                                 </svg>
                             </button>                              
                         </a>
-
-                        <div class="poema-tags">
-                            <a href="">
-                                <div class="tag-row">
-                                    <span class="tag-name">
-                                        Poemas para Vestibulares
-                                    </span>
-                                </div>
-                            </a> <!-- Tag Row -->
-                            <a href="">
-                                <div class="tag-row">
-                                    <span class="tag-name">
-                                        Poemas Romantistas
-                                    </span>
-                                </div>
-                            </a> <!-- Tag Row -->
-                            <a href="">
-                                <div class="tag-row">
-                                    <span class="tag-name">
-                                        Poemas Parnasianistas
-                                    </span>
-                                </div>
-                            </a> <!-- Tag Row -->
-                            <a href="">
-                                <div class="tag-row">
-                                    <span class="tag-name">
-                                        Poemas Modernistas
-                                    </span>
-                                </div>
-                            </a> <!-- Tag Row -->
-                            <a href="">
-                                <div class="tag-row">
-                                    <span class="tag-name">
-                                        Poemas Realistas
-                                    </span>
-                                </div>
-                            </a> <!-- Tag Row -->
-                            
-                        </div>
                     </aside>
                 </div>
             </div> <!-- Poemas em destaque-->
