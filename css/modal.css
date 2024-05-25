@@ -1,0 +1,37 @@
+.modal-container{
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+.my-modal{
+    background: #fff;
+    width: 0;
+    height: 0;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #00000070;
+    transition: width 0.15s, height 0.15s;
+    display: grid;
+    align-items: center;
+}
+
+
+.modal-container.show .my-modal{
+    height: 50%;
+    width: 60%;
+
+}
+
+.modal-container.show{
+    opacity: 1;
+    pointer-events: auto;
+}
