@@ -5,7 +5,8 @@
     $_POST['order-by-select'] = "";
 
     if (isset($_POST['order-by-btn'])){
-        $allPoemas = $PoemaDAO->getAllPoemas($_POST['order-by-select']);
+        $orderBy = filter_input(INPUT_POST, "order-by-select");
+        $allPoemas = $PoemaDAO->getAllPoemas($orderBy);
     }else{
         $allPoemas = $PoemaDAO->getAllPoemas("dt_registro DESC");
     }
