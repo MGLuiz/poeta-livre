@@ -2,13 +2,13 @@
     require 'autoload.php';
 
     $PoemaDAO = new PoemaDAO(ConnectionFactory::getConnection());
-    $_POST['order-by-select'] = "";
-
+    
     if (isset($_POST['order-by-btn'])){
         $orderBy = filter_input(INPUT_POST, "order-by-select");
         $allPoemas = $PoemaDAO->getAllPoemas($orderBy);
     }else{
         $allPoemas = $PoemaDAO->getAllPoemas("dt_registro DESC");
+        $_POST['order-by-select'] = "";
     }
 
     require 'php/Partials/Header.php';
@@ -18,7 +18,7 @@
         <div class="container-md">
             <div class="poemas-destaque">
                 <span class="qtd-poemas"><?=sizeof($allPoemas)?> poemas publicados</span>
-                <div class="order-by mb-4 d-flex align-items-center w-100">
+                <div class="order-by mb-4 d-flex flex-wrap align-items-center w-100">
                     <span class="w-auto">Ordenar por: &nbsp;</span>
                     <form action="./" method="POST" class="d-flex w-50" style="gap: 1rem;">
                         <select class="form-select w-50" name="order-by-select" id="order-by-select">
@@ -30,32 +30,34 @@
                 </div>
 
                 <div class="flex" style="justify-content: space-between;">
-                    <div class="poemas-cards">
+                    <section class="poemas-cards">
                         <?php foreach ($allPoemas as $poema){ ?>
-                        <div class="poema-card">
-                            <div class="poema-header flex">
-                                <div class="poema-title"><?=$poema['titulo']?></div>
-                                <div class="poema-date"><?=$poema['dt_registro']?></div>
-                            </div>
-                            <div class="poema-preview">
-                                <p> <?=str_replace("\n", "<br/>", $poema['poema'])?> </p>
-                            </div>
-                            <div class="poema-autoria">
-                                <div class="poema-autor"><?=$poema['autor'] ?></div>
-                                <div class="poema-fonte"><?=$poema['fonte'] ?></div>
-                            </div>
-                            <div class="poema-toolbar flex">
-                                <button id="like-btn">
-                                    <img src="icons/lovelike-24x24.png" alt="Botão de dar like">
-                                </button>
-                                <button id="copy-btn" onclick="copyToClipBoard(<?=$poema['poema']?>)">
-                                    <img src="icons/copy-26x26" alt="Botão de Copiar">
-                                </button>
-                            </div>
-                        </div> <!-- Poema Card -->
-
+                        <a href="poema/?id=<?=$poema['id']?>">
+                            <div class="poema-card">
+                                <div class="poema-header flex">
+                                    <div class="poema-title"><?=$poema['titulo']?></div>
+                                    <div class="poema-date"><?=$poema['dt_registro']?></div>
+                                </div>
+                                <div class="poema-preview">
+                                    <?=str_replace("\n", "<br/>", $poema['poema'])?>
+                                    <div class="<?=strlen($poema['poema']) > 150 ? "dissolving-layer" : ""?>"></div>
+                                </div>
+                                <div class="poema-autoria">
+                                    <div class="poema-autor"><?=$poema['autor'] ?></div>
+                                    <div class="poema-fonte"><?=$poema['fonte'] ?></div>
+                                </div>
+                                <div class="poema-toolbar flex">
+                                    <button id="like-btn">
+                                        <img src="icons/lovelike-24x24.png" alt="Botão de dar like">
+                                    </button>
+                                    <button id="copy-btn" onclick="copyToClipBoard(<?=$poema['poema']?>)">
+                                        <img src="icons/copy-26x26" alt="Botão de Copiar">
+                                    </button>
+                                </div>
+                            </div> <!-- Poema Card -->
+                        </a>
                         <?php } ?>
-                    </div>
+                    </section>
 
                     <aside class="flex">
                         <a href="./adicionar/" class="add-poema-btn flex">

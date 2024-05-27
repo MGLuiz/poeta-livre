@@ -12,78 +12,6 @@
     font-size: 0.8rem;
 }
 
-/* Poema card */
-
-.poemas-cards{
-    width: 55%;
-}
-
-.poema-card{
-    background-color: #fff;
-    border: 1px solid #a3a3a3;
-    max-width: 100%;
-    padding: 15px 35px 0 35px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 6px rgba(207, 207, 207, 0.56);
-    margin-bottom: 1.5rem;
-}
-
-.poema-card .poema-header{
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-
-}
-
-.poema-card .poema-title{
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.poema-card .poema-date{
-    font-size: 0.8rem;
-    color: #505050;
-}
-
-.poema-card .poema-preview{
-    line-height: 1.8rem;
-}
-
-.poema-card .poema-autoria{
-    margin-bottom: 0.5rem;
-}
-
-.poema-card .poema-autor{
-    font-size: 0.9rem;
-    color: #316fd3;
-}
-.poema-card .poema-fonte{
-    font-size: 0.8rem;
-    color: #505050;
-}
-
-.poema-card .poema-toolbar{
-    border-top: 1px solid #a3a3a3;
-    width: 100%;
-    padding: 8px 0;
-    color: #505050;
-    font-size: 0.9rem;
-    gap: 6px;
-}
-
-.poema-card .poema-toolbar button{
-    border: none;
-    background-color: transparent;
-    transition: .5s;
-}
-.poema-card .poema-toolbar button:hover{
-    transform: scale(1.2);
-}
-
-.poema-toolbar button img{
-    width: 24px;
-}
-
-
 /* Aside < Poemas em Destaque */
 
 .animated-button {
@@ -224,4 +152,23 @@ footer .info-project{
 footer .mgluiz-copyright{
     color: #316fd3;
     font-style: italic;
+}
+
+@media (max-width: 600px){
+
+    aside{
+        display: none !important;
+    }
+
+    .poemas-cards{
+        width: 100% !important;
+    }
+
+    .order-by{
+        display: block !important;
+    }
+
+    .form-select{
+        min-width: 150px !important;
+    }
 }
