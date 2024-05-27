@@ -20,6 +20,21 @@
             }
         }
 
+        public function getPoemasByTitle($t){
+            try{
+                $sql = "SELECT * FROM poemas WHERE titulo LIKE ? ORDER BY dt_registro DESC";
+
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindValue(1, '%'.$t.'%');
+                $stmt->execute();
+                return $stmt->fetchALl(PDO::FETCH_ASSOC);
+
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return null;
+            }
+        }
+
         public function insertPoema(Poema $p){
             try{
                 $sql = "INSERT INTO poemas(titulo, poema, fonte, dt_registro, autor) VALUES (:titulo, :poema, :fonte, :dt_registro, :autor)";
