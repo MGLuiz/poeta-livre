@@ -72,3 +72,51 @@ header nav form button{
     right: 0;
     border: 0;
 }
+
+.open-menu-btn{
+    cursor: pointer;
+    display: none !important;
+}
+
+.nav-menu-mobile{
+    background-color: var(--primary-color);
+    width: 50vw;
+    height: 100%;
+    display: none;
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    padding: 2rem 3rem;
+    box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.5);
+    transition: .5s;
+    
+}
+
+/* Responsividade */
+
+@media (max-width: 830px) {
+    header .nav-menu{
+        display: none !important;
+    }
+
+    .open-menu-btn{
+        display: flex !important;
+        
+    }
+
+    header .nav-menu-mobile{
+        display: block !important;
+        margin-right: -100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header .logo h1{
+        display: none !important;
+    }
+
+    .nav-menu-mobile{
+        width: 100%;
+    }
+}

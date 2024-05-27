@@ -37,7 +37,7 @@
     position: absolute;
     width: 24px;
     fill: var(--secondary-color);
-    z-index: 9;
+    z-index: 3;
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
   
@@ -155,7 +155,6 @@ footer .mgluiz-copyright{
 }
 
 @media (max-width: 600px){
-
     aside{
         display: none !important;
     }

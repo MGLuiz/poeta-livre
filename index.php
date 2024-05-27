@@ -81,12 +81,12 @@
     <footer>
         <div class="container">
             <span class="footer-quote flex">
-                Poeta Livre é totalmente desenvolvido, com carinho, por &nbsp; <a href="https://mgluiz.github.io/mgluiz-linktree/">MGLuiz</a>
+                Poeta Livre é totalmente desenvolvido por &nbsp; <a href="https://mgluiz.github.io/mgluiz-linktree/">MGLuiz, especialmente para Bete.</a>
             </span>
             <hr>
             <div class="flex" style="justify-content: space-between; align-items: center;">
                 <span class="info-project">
-                    "A poesia, antes de tudo, é a transfiguração da realidade em expressão de beleza e de contemplação emocional, esta desperta os valores estéticos, aprimora as emoções, sensibilidade, aguça sensações e enriquece a percepção."
+                    "Poesia, a transfiguração da realidade em expressão de beleza e de contemplação emocional, aprimora as emoções, aguça sensações e enriquece a percepção."
                 </span>
                 <span class="mgluiz-copyright">
                     &copy; 2024 <a href="https://mgluiz.github.io/mgluiz-linktree/">Luiz Brito</a>
