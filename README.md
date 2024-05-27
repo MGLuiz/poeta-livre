@@ -17,5 +17,5 @@ O **Poeta Livre** é uma comunidade onde poetas e amantes da poesia podem compar
 
 - Frontend: HTML, CSS, JQuery, Bootstrap
 - Backend: PHP, Laravel
-- Database: Postgres, Firebase
-- Hospedagem: Apache Server
+- Database: MySQL, Firebase
+- Hospedagem: 000Webhost
