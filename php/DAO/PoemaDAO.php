@@ -20,6 +20,24 @@
             }
         }
 
+        public function getPoemaById($id){
+            try{
+                $sql = "SELECT * FROM poemas WHERE id = ?";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bindValue(1, $id);
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0){
+                    return $stmt->fetch(PDO::FETCH_ASSOC);
+                }else{
+                    return null;
+                }
+            }catch(PDOException $e){
+                echo $e->getMessage();
+                return null;
+            }
+        }
+
         public function getPoemasByTitle($t){
             try{
                 $sql = "SELECT * FROM poemas WHERE titulo LIKE ? ORDER BY dt_registro DESC";

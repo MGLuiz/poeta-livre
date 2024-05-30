@@ -95,7 +95,7 @@ header nav form button{
 
 /* Responsividade */
 
-@media (max-width: 830px) {
+@media (max-width: 845px) {
     header .nav-menu{
         display: none !important;
     }

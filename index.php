@@ -53,6 +53,10 @@
                                     <button id="copy-btn" onclick="copyToClipBoard(<?=$poema['poema']?>)">
                                         <img src="icons/copy-26x26" alt="Botão de Copiar">
                                     </button>
+                                    <button id="comment-btn">
+                                        <img src="icons/comentários-24.png" alt="Botão de Comentar">
+                                    </button>
+                                    
                                 </div>
                             </div> <!-- Poema Card -->
                         </a>
