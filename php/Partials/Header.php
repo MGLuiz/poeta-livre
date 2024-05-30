@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poeta Livre</title>
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="/poetalivre/img/poetalivre-logo.jpg" type="image/x-icon">
 
     <!-- CSS imports -->
     <link rel="stylesheet" type="text/css" href="/poetalivre/bootstrap-5.3.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/poetalivre/home.css"/>
     <link rel="stylesheet" type="text/css" href="/poetalivre/css/globals.css"/>
     <!-- JS imports (defer)-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v20.0" nonce="s2U4kSM7"></script>
     <script src="/poetalivre/js/jquery-3.7.1.min.js" defer></script>
     <script src="/poetalivre/bootstrap-5.3.3/js/bootstrap.min.js" defer></script>
     <script src="/poetalivre/js/copy-to-clipboard.js" defer></script>
