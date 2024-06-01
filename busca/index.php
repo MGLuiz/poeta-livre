@@ -17,7 +17,7 @@ if (isset($_GET['s'])){
         <h2 class="mb-4">Resultados para "<?=$_GET['s'] ?>":</h2>
         <section class="poemas-cards">
             <?php foreach ($poemas as $poema){ ?>
-            <a href="poema/?id=<?=$poema['id']?>">
+            <a href="../poema/?id=<?=$poema['id']?>">
                 <div class="poema-card">
                     <div class="poema-header flex">
                         <div class="poema-title"><?=$poema['titulo']?></div>
